@@ -6,6 +6,7 @@ import { FaCartShopping } from "react-icons/fa6";
 export default function Header() {
   return (
     <div className="bg-white shadow-md bg-[url('/images/default/header_desktop.png')] bg-cover w-fulls">
+      {/* Header-top */}
       <div className="mx-auto">
         <div className="container mx-auto py-3">
           <div className="flex justify-between items-center text-sm font-extralight text-white">
@@ -26,8 +27,12 @@ export default function Header() {
           </div>
         </div>
       </div>
+      {/* End Header-top */}
+
+      {/* Header main */}
       <div className="container mx-auto">
         <div className="py-4 flex justify-between items-center">
+          {/* Logo */}
           <div className="w-1/5">
             <a href="#">
               <Image
@@ -39,6 +44,9 @@ export default function Header() {
               />
             </a>
           </div>
+          {/* End Logo */}
+
+          {/* SearchoBox */}
           <form className="w-1/2">
             <label
               htmlFor="default-search"
@@ -73,7 +81,9 @@ export default function Header() {
               />
             </div>
           </form>
-          {/* <SearchBar /> */}
+          {/* End SearchBox */}
+
+          {/* Cart and Login */}
           <div className="w-1/5 flex items-center space-x-4">
             <a href="#" className="flex items-center">
               <FaUser className="w-5 h-5 text-white" />
@@ -87,7 +97,11 @@ export default function Header() {
               <span className="ml-2 text-white font-medium">Giỏ hàng</span>
             </a>
           </div>
+          {/* End Cart and Login */}
         </div>
+        {/* End Header main */}
+
+        {/* Header menu */}
         <div className="pb-3">
           <ul className="flex justify-center space-x-6">
             <li>
@@ -107,7 +121,9 @@ export default function Header() {
             </li>
           </ul>
         </div>
+        {/* End Header menu */}
       </div>
+      {/* End Header main */}
     </div>
   );
 }
