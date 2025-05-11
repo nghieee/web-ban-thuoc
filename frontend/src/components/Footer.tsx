@@ -1,10 +1,48 @@
-// Footer.jsx
 import Image from "next/image";
 import Link from "next/link";
 
 export default function Footer() {
+  const aboutItems = [
+    "Giới thiệu",
+    "Giấy phép kinh doanh",
+    "Quy chế hoạt động",
+    "Chính sách đặt cọc",
+    "Chính sách nội dung",
+    "Chính sách đổi trả",
+    "Chính sách giao hàng",
+    "Chính sách bảo mật",
+    "Chính sách thanh toán",
+    "Kiểm tra hóa đơn điện tử",
+    "Chính sách thu thập và xử lý dữ liệu cá nhân",
+    "Thông tin trung tâm bảo hành thiết bị y tế từng hãng",
+  ];
+
+  const categoryItems = [
+    "Thực phẩm chức năng",
+    "Dược mỹ phẩm",
+    "Chăm sóc cá nhân",
+    "Thuốc",
+    "Thiết bị y tế",
+  ];
+
+  const contactItems = [
+    { label: "Tư vấn mua hàng", number: "18006928", branch: "Nhánh 1" },
+    { label: "Trung tâm tư vấn", number: "18006928", branch: "Nhánh 2" },
+    { label: "Góp ý, khiếu nại", number: "18006928", branch: "Nhánh 3" },
+  ];
+
+  const socialItems = [
+    { src: "/images/social/facebook_logo.png", alt: "Facebook" },
+    { src: "/images/social/zalo_logo.png", alt: "Zalo" },
+  ];
+
+  const certificationItems = [
+    { src: "/images/certifications/bo_cong_thuong.png", alt: "Bo Cong Thuong" },
+    { src: "/images/certifications/dmca.png", alt: "DMCA" },
+  ];
+
   return (
-    <footer>
+    <footer className="bg-white">
       {/* Footer Top Banner */}
       <div className="footer-top">
         <Image
@@ -15,204 +53,108 @@ export default function Footer() {
           className="w-full h-auto"
         />
       </div>
-      {/* End Footer Top Banner */}
 
-      {/* Footer Content  */}
-      <div className="bg-white">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-wrap justify-between text-sm pt-3">
-            {/* About Us Section */}
-            <div className="w-full md:w-1/5 mb-6">
-              <div className="text-base text-gray-600 font-medium pb-2">
-                Về chúng tôi
-              </div>
-              <ul className="text-blue-600">
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Giới thiệu
-                  </Link>
+      {/* Footer Content */}
+      <div className="container mx-auto px-4 py-6 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+          {/* About Us Section */}
+          <div>
+            <h4 className="text-base font-medium text-gray-600 pb-2">
+              Về chúng tôi
+            </h4>
+            <ul className="space-y-1 text-blue-600">
+              {aboutItems.map((item) => (
+                <li key={item}>
+                  <Link href="#">{item}</Link>
                 </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Giấy phép kinh doanh
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Quy chế hoạt động
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách đặt cọc
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách nội dung
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách đổi trả
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách giao hàng
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách bảo mật
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách thanh toán
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Kiểm tra hóa đơn điện tử
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chính sách thu thập và xử lý dữ liệu cá nhân
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Thông tin trung tâm bảo hành thiết bị y tế từng hãng
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            {/* Categories Section */}
-            <div className="w-full md:w-1/5 mb-6">
-              <div className="text-base text-gray-600 font-medium pb-2">
-                Danh mục
-              </div>
-              <ul className="text-blue-600">
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Thực phẩm chức năng
-                  </Link>
+          {/* Categories Section */}
+          <div>
+            <h4 className="text-base font-medium text-gray-600 pb-2">
+              Danh mục
+            </h4>
+            <ul className="space-y-1 text-blue-600">
+              {categoryItems.map((item) => (
+                <li key={item}>
+                  <Link href="#">{item}</Link>
                 </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Dược mỹ phẩm
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Chăm sóc cá nhân
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Thuốc
-                  </Link>
-                </li>
-                <li className="mb-1">
-                  <Link href="#" className="">
-                    Thiết bị y tế
-                  </Link>
-                </li>
-              </ul>
-            </div>
+              ))}
+            </ul>
+          </div>
 
-            {/* Contact Section */}
-            <div className="w-full md:w-1/5 mb-6">
-              <div className="text-base text-gray-600 font-medium pb-2">
-                Tổng đài
-              </div>
-              <div>
-                <p className="text-gray-700">Tư vấn mua hàng</p>
-                <p className="mb-2 text-blue-600">
-                  <Link href="#" className="">
-                    18006928 <span className="text-gray-600">(Nhánh 1)</span>
-                  </Link>
-                </p>
-                <p className="text-gray-700">Trung tâm tư vấn</p>
-                <p className="mb-2 text-blue-600">
-                  <Link href="#" className="">
-                    18006928 <span className="text-gray-600">(Nhánh 2)</span>
-                  </Link>
-                </p>
-                <p className="text-gray-700">Góp ý, khiếu nại</p>
-                <p className="mb-2 text-blue-600">
-                  <Link href="#" className="">
-                    18006928 <span className="text-gray-600">(Nhánh 3)</span>
-                  </Link>
-                </p>
-              </div>
-            </div>
-
-            {/* Connect Section */}
-            <div className="w-full md:w-1/5 mb-6">
-              <div>
-                <div className="text-base font-medium pb-2 text-gray-600">
-                  Kết nối với chúng tôi
+          {/* Contact Section */}
+          <div>
+            <h4 className="text-base font-medium text-gray-600 pb-2">
+              Tổng đài
+            </h4>
+            <div className="space-y-2">
+              {contactItems.map((item) => (
+                <div key={item.label}>
+                  <p className="text-gray-700">{item.label}</p>
+                  <p className="text-blue-600">
+                    <Link href="#">
+                      {item.number}{" "}
+                      <span className="text-gray-600">({item.branch})</span>
+                    </Link>
+                  </p>
                 </div>
-                <div className="flex space-x-2">
-                  <Image
-                    src="/images/social/facebook_logo.png"
-                    alt="Facebook"
-                    width={28}
-                    height={28}
-                  />
-                  <Image
-                    src="/images/social/zalo_logo.png"
-                    alt="Zalo"
-                    width={28}
-                    height={28}
-                  />
-                </div>
-              </div>
-              <div className="mt-5">
-                <div className="text-base font-medium pb-2 text-gray-600">
-                  Tải ứng dụng Long Châu phake
-                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Connect Section */}
+          <div>
+            <h4 className="text-base font-medium text-gray-600 pb-2">
+              Kết nối với chúng tôi
+            </h4>
+            <div className="flex space-x-2">
+              {socialItems.map((item) => (
                 <Image
-                  src="/images/social/download_qr.png"
-                  alt="QR Code"
-                  width={100}
-                  height={100}
+                  key={item.alt}
+                  src={item.src}
+                  alt={item.alt}
+                  width={28}
+                  height={28}
                 />
-              </div>
+              ))}
             </div>
+            <h4 className="text-base font-medium text-gray-600 pb-2 mt-5">
+              Tải ứng dụng Long Châu phake
+            </h4>
+            <Image
+              src="/images/social/download_qr.png"
+              alt="QR Code"
+              width={100}
+              height={100}
+            />
+          </div>
 
-            {/* Certifications Section */}
-            <div className="w-full md:w-1/5 mb-6">
-              <div className="text-base font-medium pb-2 text-gray-600">
-                Chứng nhận bởi
-              </div>
-              <div className="flex justify-evenly items-center md:justify-start md:gap-x-3">
+          {/* Certifications Section */}
+          <div>
+            <h4 className="text-base font-medium text-gray-600 pb-2">
+              Chứng nhận bởi
+            </h4>
+            <div className="flex gap-x-3">
+              {certificationItems.map((item) => (
                 <Image
-                  src="/images/certifications/bo_cong_thuong.png"
-                  alt="Bo Cong Thuong"
+                  key={item.alt}
+                  src={item.src}
+                  alt={item.alt}
                   width={70}
                   height={45}
                 />
-                <Image
-                  src="/images/certifications/dmca.png"
-                  alt="DMCA"
-                  width={70}
-                  height={45}
-                />
-              </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
-      {/* End Footer Content */}
 
       {/* Footer Bottom */}
-      <div className="bg-white">
-        <div className="container mx-auto py-4 text-center text-gray-500 text-sm border-t-1 border-gray-300">
+      <div className="text-center text-gray-500 text-sm">
+        <div className="container border-t border-gray-300 py-4 mx-auto">
           <p>
             © 2007 - 2025 Công ty Cổ Phần Dược Phẩm FPT Long Châu Số ĐKKD
             0315275368 cấp ngày 17/09/2018 tại Sở Kế hoạch Đầu tư TPHCM
@@ -221,7 +163,7 @@ export default function Footer() {
             GP thiết lập TTTĐTTH số 538/GP-TTĐT do Sở TTTT Hồ Chí Minh cấp ngày
             27 tháng 03 năm 2025
           </p>
-          <ul className="list-disc list-inside flex flex-col items-center">
+          <ul className="list-disc list-inside space-y-1">
             <li>Địa chỉ: 379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM</li>
             <li>
               Số điện thoại:{" "}
