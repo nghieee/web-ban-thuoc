@@ -1,6 +1,7 @@
 import { ReactNode } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
+import NavigationBar from '../components/NavigationBar';
 import '../app/globals.css';
 
 export default function RootLayout({ children }: { children: ReactNode }) {
@@ -9,6 +10,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div id="root">
           <Header />
+          <NavigationBar />
           <main>{children}</main>
           <Footer />
         </div>
