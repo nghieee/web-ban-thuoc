@@ -23,7 +23,9 @@ interface Props {
 
 export default function CateDropdownMenuItems({ title, categories }: Props) {
   const [isOpen, setIsOpen] = useState(false);
-  const [activeCategory, setActiveCategory] = useState(categories[0]?.id ?? "");
+  const [activeCategory, setActiveCategory] = useState(
+    categories.length > 0 ? categories[0].id : ""
+  );
 
   return (
     <div
@@ -42,7 +44,6 @@ export default function CateDropdownMenuItems({ title, categories }: Props) {
             isOpen ? "rotate-180 text-blue-600" : "text-gray-500"
           }`}
         />
-        {/* Gạch chân động */}
         <span
           className={`absolute left-0 bottom-0 h-[2px] bg-blue-600 transition-all duration-300 ${
             isOpen ? "w-full" : "group-hover:w-full w-0"
@@ -51,10 +52,9 @@ export default function CateDropdownMenuItems({ title, categories }: Props) {
       </button>
 
       {isOpen && (
-        
         <div className="absolute left-0 top-full w-full z-50">
           <div className="container mx-auto flex bg-white shadow-lg border rounded-b-lg">
-            {/* Cột trái: danh mục */}
+            {/* Cột trái: danh mục lv2 */}
             <div className="w-1/3 p-4 border-r">
               {categories.map((cat) => (
                 <div
@@ -67,7 +67,7 @@ export default function CateDropdownMenuItems({ title, categories }: Props) {
                   }`}
                 >
                   <Image
-                    src={cat.icon}
+                    src={cat.icon || "/images/placeholder.png"}
                     alt={cat.name}
                     width={24}
                     height={24}
@@ -78,30 +78,31 @@ export default function CateDropdownMenuItems({ title, categories }: Props) {
               ))}
             </div>
 
-            {/* Cột phải: sản phẩm tương ứng */}
+            {/* Cột phải: Danh mục lv3 tương ứng */}
             <div className="w-2/3 p-4 grid grid-cols-2 gap-3">
-              {categories
-                .find((c) => c.id === activeCategory)
-                ?.items.map((item, index) => (
+              {(() => {
+                const activeCat = categories.find((c) => c.id === activeCategory);
+                if (!activeCat || activeCat.items.length === 0) {
+                  return <div className="text-gray-500">Không có danh mục con</div>;
+                }
+                return activeCat.items.map((item, index) => (
                   <div
                     key={index}
                     className="flex items-center gap-2 p-3 bg-gray-100 hover:bg-gray-200 rounded-lg transition-colors duration-200 cursor-pointer"
                   >
-                    {/* Hình ảnh sản phẩm */}
                     <Image
-                      src={item.image}
+                      src={item.image || "/images/placeholder.png"}
                       alt={item.name}
                       width={40}
                       height={40}
                       className="object-contain"
                     />
-
-                    {/* Tên sản phẩm */}
                     <span className="text-sm font-medium text-gray-800">
                       {item.name}
                     </span>
                   </div>
-                ))}
+                ));
+              })()}
             </div>
           </div>
         </div>

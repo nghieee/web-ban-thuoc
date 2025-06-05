@@ -10,7 +10,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div id="root">
           <Header />
-          <NavigationBar />
+          <NavigationBar categories={null} />
           <main>{children}</main>
           <Footer />
         </div>
