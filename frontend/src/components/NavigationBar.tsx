@@ -1,84 +1,66 @@
 import CateDropdownMenuItems from "../components/CateDropdownMenuItems";
 
-export default function NavigationBar() {
+interface Category {
+  categoryId: number;
+  categoryName: string;
+  imageUrl: string;
+  subCategories: Category[];
+}
+
+interface NavigationBarProps {
+  categories: Category[] | null;
+}
+
+export default function NavigationBar({ categories }: NavigationBarProps) {
   return (
     <div className="bg-white">
       <div className="container mx-auto relative">
         <nav className="flex gap-8">
-          <CateDropdownMenuItems
-            title="Thực phẩm chức năng"
-            categories={[
-              {
-                id: "vitamin",
-                name: "Vitamin & Khoáng chất",
-                icon: "/images/cateIcons/ChamSocDaMat.png",
-                items: [
-                  {
-                    name: "Bổ sung Canxi & Vitamin D",
-                    image: "/images/products/Vitamin_VienSuiKudosDo.png",
-                  },
-                  {
-                    name: "Vitamin tổng hợp",
-                    image: "/images/products/Vitamin_VienSuiKudosDo.png",
-                  },
-                  {
-                    name: "Dầu cá, Omega 3, DHA",
-                    image: "/images/products/Vitamin_VienSuiKudosDo.png",
-                  },
-                  {
-                    name: "Vitamin C các loại",
-                    image: "/images/products/Vitamin_VienSuiKudosDo.png",
-                  },
-                  {
-                    name: "Bổ sung Sắt & Axit Folic",
-                    image: "/images/products/Vitamin_VienSuiKudosDo.png",
-                  },
-                ],
-              },
-              {
-                id: "heart",
-                name: "Sức khỏe tim mạch",
-                icon: "/images/cateIcons/DinhDuong.png",
-                items: [
-                  {
-                    name: "Giảm cholesterol",
-                    image: "/images/products/Vitamin_VienSuiKudosHong.png",
-                  },
-                  {
-                    name: "Tăng tuần hoàn",
-                    image: "/images/products/Vitamin_VienSuiKudosHong.png",
-                  },
-                  {
-                    name: "Hạ huyết áp",
-                    image: "/images/products/Vitamin_VienSuiKudosHong.png",
-                  },
-                ],
-              },
-            ]}
-          />
-
-          <CateDropdownMenuItems
-            title="Tim mạch"
-            categories={[
-              {
-                id: "blood",
-                name: "Huyết áp & Máu",
-                icon: "/images/cateIcons/ThanKinhNao.png",
-                items: [
-                  {
-                    name: "Hạ huyết áp",
-                    image: "/images/products/Vitamin_VienSuiKudosVang.png",
-                  },
-                  {
-                    name: "Tăng tuần hoàn",
-                    image: "/images/products/Vitamin_VienSuiKudosVang.png",
-                  },
-                ],
-              },
-            ]}
-          />
+          {categories && Array.isArray(categories) && categories.length > 0 ? (
+            categories.map((category) => (
+              <CateDropdownMenuItems
+                key={category.categoryId}
+                title={category.categoryName}
+                categories={category.subCategories.map((sub) => ({
+                  id: sub.categoryId.toString(),
+                  name: sub.categoryName,
+                  icon: sub.imageUrl || "/images/placeholder.png",
+                  items: sub.subCategories.map((subSub) => ({
+                    name: subSub.categoryName,
+                    image: subSub.imageUrl || "/images/placeholder.png",
+                  })),
+                }))}
+              />
+            ))
+          ) : (
+            <div className="text-black py-3">Không có danh mục nào</div>
+          )}
         </nav>
       </div>
     </div>
   );
+}
+
+export async function getServerSideProps() {
+  try {
+    const res = await fetch("http://localhost:5000/api/categories");
+    console.log("API response status:", res.status);
+    if (!res.ok) {
+      throw new Error(`HTTP error! status: ${res.status}`);
+    }
+    const categories: Category[] = await res.json();
+    console.log("Categories fetched:", categories);
+    return {
+      props: {
+        categories,
+      },
+    };
+  } catch (error) {
+    console.error("Error fetching categories:", error);
+    return {
+      props: {
+        categories: null,
+      },
+    };
+  }
 }

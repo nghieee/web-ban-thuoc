@@ -1,5 +1,6 @@
 "use client";
 import Image from "next/image";
+import Link from "next/link";
 import {
   FaUser,
   FaCartShopping,
@@ -12,7 +13,7 @@ export default function Header() {
   return (
     <header className="bg-white shadow-md bg-[url('/images/default/header_desktop.png')] bg-cover">
       {/* Header Top */}
-      <div className="container mx-auto py-3">
+      <div className="hidden lg:block container mx-auto py-3 px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center text-sm font-extralight text-white">
           <div className="flex items-center">
             <FaBullhorn className="mr-2" /> Chào mừng bạn đến với nhà thuốc Long
@@ -30,21 +31,21 @@ export default function Header() {
       </div>
 
       {/* Header Main */}
-      <div className="container mx-auto py-4">
-        <div className="flex items-center justify-between">
+      <div className="container mx-auto py-4 px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row items-center justify-between space-y-4 md:space-y-0">
           {/* Logo */}
-          <a href="#" className="w-1/5">
+          <Link href="/" className="w-full md:w-1/5 flex justify-center md:justify-start">
             <Image
               src="/images/default/header_logo_brand.png"
               alt="Logo"
               width={183}
               height={56}
-              className="h-[56px] w-auto"
+              className="h-[40px] sm:h-[56px] w-auto"
             />
-          </a>
+          </Link>
 
           {/* Search Box */}
-          <form className="w-1/2">
+          <form className="w-full md:w-1/2">
             <div className="relative">
               <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <svg
@@ -71,18 +72,18 @@ export default function Header() {
           </form>
 
           {/* Cart and Login */}
-          <div className="w-1/5 flex items-center space-x-4">
-            <a href="#" className="flex items-center text-body1 font-medium">
+          <div className="w-full md:w-1/4 flex items-center justify-center md:justify-end space-x-4">
+            <Link href="/auth" className="flex items-center text-body1 font-medium">
               <FaUser className="w-5 h-5 text-white" />
               <span className="ml-2">Đăng nhập</span>
-            </a>
-            <a
-              href="#"
+            </Link>
+            <Link
+              href="/cart"
               className="flex items-center px-5 py-2 bg-[#1250DC] rounded-3xl font-medium"
             >
               <FaCartShopping className="w-5 h-5 text-white" />
               <span className="ml-2 text-white">Giỏ hàng</span>
-            </a>
+            </Link>
           </div>
         </div>
       </div>

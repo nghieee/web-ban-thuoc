@@ -10,8 +10,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body>
         <div id="root">
           <Header />
-          <NavigationBar />
-          <main>{children}</main>
+          <NavigationBar categories={null} />
+          <main className="bg-[#EAEFFA]">{children}</main>
           <Footer />
         </div>
       </body>

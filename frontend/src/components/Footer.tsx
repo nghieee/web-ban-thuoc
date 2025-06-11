@@ -56,7 +56,7 @@ export default function Footer() {
 
       {/* Footer Content */}
       <div className="container mx-auto px-4 py-6 text-sm">
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
           {/* About Us Section */}
           <div>
             <h4 className="text-base font-medium text-gray-600 pb-2">
@@ -163,7 +163,7 @@ export default function Footer() {
             GP thiết lập TTTĐTTH số 538/GP-TTĐT do Sở TTTT Hồ Chí Minh cấp ngày
             27 tháng 03 năm 2025
           </p>
-          <ul className="list-disc list-inside space-y-1">
+          <ul className="list-inside space-y-1">
             <li>Địa chỉ: 379-381 Hai Bà Trưng, P. Võ Thị Sáu, Q.3, TP. HCM</li>
             <li>
               Số điện thoại:{" "}
