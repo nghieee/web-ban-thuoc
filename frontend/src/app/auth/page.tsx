@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-export default function AccountPage() {
+export default function AuthPage() {
   // Giả lập dữ liệu lỗi cho mục đích hiển thị giao diện
   const loginError = null; // Thay null bằng chuỗi lỗi nếu cần, ví dụ: "Email hoặc mật khẩu không đúng"
   const registerError = null; // Thay null bằng chuỗi lỗi nếu cần, ví dụ: "Đăng ký thất bại"
